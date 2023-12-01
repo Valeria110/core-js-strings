@@ -353,7 +353,6 @@ function isPalindrome(str) {
 
   arr.forEach((letter) => {
     if (letter === arr[i]) {
-      // console.log('letter', letter, 'letter2', arr[i]);
       matchingLetters += 1;
     }
     i -= 1;
@@ -374,8 +373,16 @@ function isPalindrome(str) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  if (sentence) {
+    const arrOfWords = sentence.split(' ');
+    const arrOfWordsLength = arrOfWords.map((word) => word.length);
+    const theLongestValue = Math.max(...arrOfWordsLength);
+
+    return arrOfWords.find((word) => word.length === theLongestValue);
+  }
+
+  return '';
 }
 
 /**
@@ -388,8 +395,13 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const arr1 = str.split(' ');
+  const reversedArr = arr1.map((word) => {
+    return word.split('').reverse().join('');
+  });
+
+  return reversedArr.join(' ');
 }
 
 /**
@@ -403,8 +415,26 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  if (str) {
+    const arr = [];
+
+    str.split('').forEach((item) => {
+      if (typeof item === 'string') {
+        if (item === item.toUpperCase()) {
+          arr.push(item.toLowerCase());
+        } else {
+          arr.push(item.toUpperCase());
+        }
+      } else {
+        arr.push(item);
+      }
+    });
+
+    return arr.join('');
+  }
+
+  return '';
 }
 
 /**
@@ -420,8 +450,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -434,8 +464,8 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, -1);
 }
 
 /**
